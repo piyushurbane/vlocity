@@ -1,0 +1,8 @@
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let x of peoples;let i=index" 
+  (click)="getUserRecord(i)"
+  >
+      {{x.name}}
+    <span class="glyphicon glyphicon-triangle-right right"></span>
+    </li>
+</ul>

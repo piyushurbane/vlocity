@@ -1,0 +1,31 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active">
+          <div class="form-group has-feedback">
+            <input type="text" class="form-control searchcontrol" 
+            (input)="searchuser(search)"
+            [(ngModel)]="search" placeholder="search" id="usr">
+            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+          </div>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{currentuser}}<span class="glyphicon glyphicon-user"></span><span
+              class="caret"></span></a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>

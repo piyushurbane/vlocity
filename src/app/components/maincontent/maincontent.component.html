@@ -1,0 +1,77 @@
+
+<div *ngIf="selectedpeople">
+  <div class="row userinfodiv">
+    <div class="col-md-4 col-sm-12 col-xs-12">
+      <img src="{{selectedpeople.img}}" class="img-rounded img-responsive" alt="Cinque Terre" width="304" height="236">
+    </div>
+    <div class="col-md-8 col-sm-12 col-xs-12 userinfomsg">
+     <h1>{{selectedpeople.name}}</h1>
+      <button type="button" class="btn btn-default custombtn" data-toggle="modal" data-target="#myModal">Send Message</button>
+      <div class="starcontainer">
+        <span class="star" *ngFor="let x of [1,2,3,4,5]">
+          <span class="glyphicon" [ngClass]="{'glyphicon-heart':selectedpeople.rating >= x , 'glyphicon-heart-empty	
+          ': selectedpeople.rating < x}"></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="customjumbotron jumbotron">
+    <p>{{selectedpeople.Description}}</p>
+  </div>
+
+  <!-- <div class="alert alert-success">
+    <strong>Success!</strong> Indicates a successful or positive action.
+  </div> -->
+
+  <div class="well" *ngIf="smessages !=''">
+    <h3>Messages:</h3>
+      <div class="alert alert-success" *ngFor="let message of smessages">
+      <strong>{{message.currentuser}} :</strong> {{message.message}}
+      </div>
+  </div>
+
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Likes</th>
+        <th>DisLikes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let likes of selectedpeople.Likes;let i=index">
+        <td>{{likes}}</td>
+        <td>{{selectedpeople.Dislikes[i]}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="users">List Of Users</label>
+          <select id="users" #user>
+            <option>select user</option>
+            <option *ngFor="let x of allpeople;let i=index" value="{{i}}">{{x.name}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <textarea class="form-control" [(ngModel)]="msg" placeholder="send Your message" rows="5" id="comment"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="sendmsg(user,msg)">Send</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
